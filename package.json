@@ -5,7 +5,7 @@
   "bundleDependencies": false,
   "deprecated": false,
   "description": "",
-  "peerDependencies":  {
+  "peerDependencies": {
     "parcel-bundler": "1.x"
   },
   "repository": {
@@ -20,5 +20,8 @@
   "dependencies": {
     "@iarna/toml": "^2.2.0",
     "command-exists": "^1.2.7"
+  },
+  "devDependencies": {
+    "@parcel/logger": "^1.11.0"
   }
 }
