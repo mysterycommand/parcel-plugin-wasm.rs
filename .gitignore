@@ -1,2 +1,5 @@
 wasm-loader.js
 /node_modules
+
+.vscode
+yarn.lock
