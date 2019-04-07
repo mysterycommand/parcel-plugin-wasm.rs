@@ -1,4 +1,5 @@
 const { Asset } = require('parcel-bundler')
+const logger = requre('@parcel/logger')
 const commandExists = require('command-exists')
 const toml = require('@iarna/toml')
 const path = require('path')
@@ -129,7 +130,7 @@ class WASMbindgenAsset extends Asset {
         outDir,
         rustName,
         loc: path.join(cargoDir, 'target', RUST_TARGET, 'release')
-      } 
+      }
     } catch (e) {
       throw `Building failed... Please install wasm-pack and try again.`
     }
@@ -226,6 +227,7 @@ class WASMbindgenAsset extends Asset {
     let dir = path.dirname(this.name)
 
     let deps = contents.trim().split(':')[1].split(' ').filter(x => x)
+    logger.log(deps)
 
     for (let dep of deps) {
       if (dep !== this.name) {
