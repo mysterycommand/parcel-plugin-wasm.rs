@@ -1,5 +1,5 @@
 const { Asset } = require('parcel-bundler')
-const logger = requre('@parcel/logger')
+const logger = require('@parcel/logger')
 const commandExists = require('command-exists')
 const toml = require('@iarna/toml')
 const path = require('path')
@@ -138,6 +138,7 @@ class WASMbindgenAsset extends Asset {
 
   async wasmPostProcess({cargoDir, loc, outDir, rustName}) {
     let js_content = (await lib.readFile(path.join(outDir, rustName + '.js'))).toString()
+
     let wasm_path = path.relative(path.dirname(this.name), path.join(loc, rustName + '_bg.wasm'))
     if (wasm_path[0] !== '.')
       wasm_path = './' + wasm_path
@@ -227,7 +228,6 @@ class WASMbindgenAsset extends Asset {
     let dir = path.dirname(this.name)
 
     let deps = contents.trim().split(':')[1].split(' ').filter(x => x)
-    logger.log(deps)
 
     for (let dep of deps) {
       if (dep !== this.name) {
